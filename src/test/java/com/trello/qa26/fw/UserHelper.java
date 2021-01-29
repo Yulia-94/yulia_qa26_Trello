@@ -76,7 +76,6 @@ public class UserHelper extends HelperBase{
     public void changeAvatar (String path) {
         Actions actions = new Actions(wd);
         actions.moveToElement(wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info']")))
-              //  .click()
                 .moveToElement(wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info'] [class^=Droplist__Trigger]")))
                 //.moveToElement(wd.findElement(By.xpath(".//*[@class='Droplist__Trigger-sc-1z05y4v-3 eteVrT']")))
                 .click()
