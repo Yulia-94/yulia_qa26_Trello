@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserHelper extends HelperBase{
-    WebDriver wd;
 
     public UserHelper(WebDriver wd) {
         super(wd);
@@ -73,17 +72,21 @@ public class UserHelper extends HelperBase{
 
    
 
-    public void changeAvatar (String path) {
+    public void changeAvatar (String path) throws InterruptedException {
         Actions actions = new Actions(wd);
         actions.moveToElement(wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info']")))
                 .moveToElement(wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info'] [class^=Droplist__Trigger]")))
                 //.moveToElement(wd.findElement(By.xpath(".//*[@class='Droplist__Trigger-sc-1z05y4v-3 eteVrT']")))
                 .click()
                 .perform();
-        click(By.xpath("//div[@id='uid16']/span[1]"));
-        // click(By.xpath("//div[@class='sc-iuJeZd gyunVU']/span[1]"));
-        attachPhoto(By.id("image-input"), new File(path));
-        click(By.xpath("//span[text()='Upload']"));
+        //click(By.xpath("//div[@id='uid16']/span[1]"));
+         click(By.xpath("//div[@class='sc-iuJeZd gyunVU']/span[1]"));
+         pause(1000);
+
+        attachPhoto(By.cssSelector("#image-input"), new File(path));
+        pause(1000);
+        clickXpath("//div[@class='sc-cNnxps eYeGXT']/button[1]");
+  
     }
 
 
