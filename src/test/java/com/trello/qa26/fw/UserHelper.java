@@ -86,7 +86,7 @@ public class UserHelper extends HelperBase{
         attachPhoto(By.cssSelector("#image-input"), new File(path));
         pause(1000);
         clickXpath("//div[@class='sc-cNnxps eYeGXT']/button[1]");
-  
+
     }
 
 
