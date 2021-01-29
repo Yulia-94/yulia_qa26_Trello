@@ -22,7 +22,7 @@ public class ChangeAvatar extends TestBase{
         app.user().goToProfile();
         app.user().goToAtlasianAcc();
 
-        app.user().changeAvatar("C:\\Users\\Юля\\Documents\\GitHub\\yulia_qa26_Trello\\src\\test\\resources\\dog1.jpg");
+        app.user().changeAvatar("C:/Users/Юля/Documents/GitHub/yulia_qa26_Trello/src/test/resources/dog1.jpg");
         Assert.assertTrue(app.user().isElementPresent(By.xpath("//*[contains(.,'Avatar added']")));
         app.user().pause(2000);
         app.user().closeWindow();

@@ -3,7 +3,10 @@ package com.trello.qa26.fw;
 import com.trello.qa26.model.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,7 +61,7 @@ public class UserHelper extends HelperBase{
     }
 
     public void goToAtlasianAcc() {
-        System.out.println(wd.getWindowHandles());
+      //  System.out.println(wd.getWindowHandles());
         click(By.cssSelector("[href$=manage-profile]"));
         swichToWindowHanleIndex(1);
 
@@ -70,7 +73,7 @@ public class UserHelper extends HelperBase{
 
    
 
-    public void changeAvatar(String path) {
+    public void changeAvatar (String path) {
         Actions actions = new Actions(wd);
         actions.moveToElement(wd.findElement(By.cssSelector("[data-test-selector='profile-hover-info']")))
               //  .click()
@@ -80,8 +83,9 @@ public class UserHelper extends HelperBase{
                 .perform();
         click(By.xpath("//div[@id='uid16']/span[1]"));
         // click(By.xpath("//div[@class='sc-iuJeZd gyunVU']/span[1]"));
-        click(By.xpath("//span[@class='css-t5emrf']/font[1]"));
-
-        attachPhoto(By.cssSelector("[#image-input]"), new File(path));
+        attachPhoto(By.id("image-input"), new File(path));
+        click(By.xpath("//span[text()='Upload']"));
     }
+
+
 }
