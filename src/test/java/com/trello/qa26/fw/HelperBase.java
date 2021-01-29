@@ -2,6 +2,11 @@ package com.trello.qa26.fw;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HelperBase {
 
@@ -11,8 +16,16 @@ public class HelperBase {
         this.wd = wd;
     }
 
+    public void swichToWindowHanleIndex(int index1) {
+        List<String> tabs = new ArrayList<>(wd.getWindowHandles());
+        wd.switchTo().window(tabs.get(index1));
+
+
+    }
     public void click(By locator){
         wd.findElement(locator).click();
+        //Actions actions = new Actions(wd);
+        //actions.moveToElement(wd.findElement(locator)).click().perform();
     }
 
     public void type(By locator, String text) {
@@ -22,6 +35,13 @@ public class HelperBase {
             wd.findElement(locator).sendKeys(text);
         }
     }
+    public void attachPhoto(By locator, File file) {
+        if (file != null) {
+            wd.findElement(locator).sendKeys(file.getAbsolutePath());
+        }
+    }
+
+
     public void typeByCss(String cssSelector, String text) {
         if (text != null) {
 
